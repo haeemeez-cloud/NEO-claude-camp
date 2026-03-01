@@ -89,7 +89,7 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 | Block 0 | `references/block0-setup.md` |
 | Block 1 | `references/block1-experience.md` |
 | Block 2 | `references/block2-why.md` |
-| Block 3-1 ~ 3-4 | `references/block3-1-claude-md.md` ~ `references/block3-4-subagent.md` |
+| Block 3-1 ~ 3-4 | `references/block3-1-memory.md` ~ `references/block3-4-subagent.md` |
 | Block 3-Break | `references/block3-break.md` (쉬어가기: 터미널 & Status Line) |
 | Block 3-5 ~ 3-7 | `references/block3-5-agent-teams.md` ~ `references/block3-7-plugin.md` |
 | Block 3 마무리 | `references/block3-summary.md` |
@@ -116,7 +116,7 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 
 | Block | 주제 | 내용 |
 |-------|------|------|
-| 0 | Setup | 첫 실행 설정 + 에디터 + CLAUDE.md |
+| 0 | Setup | 첫 실행 설정 + 에디터 |
 | 1 | Experience | Working Backward 데모 3가지 |
 | 2 | Why | 왜 CLI? 왜 터미널? (퀴즈 2개) |
 | 3 | What | 7개 기능 소개 |
@@ -128,7 +128,7 @@ AskUserQuestion({
     "question": "어디서부터 시작할까요?",
     "header": "시작 블록",
     "options": [
-      {"label": "Block 0: Setup", "description": "첫 실행 설정 + 에디터 + CLAUDE.md"},
+      {"label": "Block 0: Setup", "description": "첫 실행 설정 + 에디터"},
       {"label": "Block 1: Experience", "description": "Working Backward 데모 3가지"},
       {"label": "Block 2: Why", "description": "왜 CLI? 왜 터미널?"},
       {"label": "Block 3: What", "description": "7개 기능 소개"}

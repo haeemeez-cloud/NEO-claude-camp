@@ -5,7 +5,7 @@
 
 ## EXPLAIN
 
-여기까지 Claude Code의 핵심 기능 4개(CLAUDE.md, Skill, MCP, Subagent)를 배웠다. 잠깐 숨 고르기.
+여기까지 Claude Code의 핵심 기능 4개(Memory, Skill, MCP, Subagent)를 배웠다. 잠깐 숨 고르기.
 
 Claude Code는 **터미널**에서 돌아간다. 어떤 터미널을 쓰느냐에 따라 경험이 달라진다.
 

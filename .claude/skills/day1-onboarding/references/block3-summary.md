@@ -8,7 +8,7 @@
 7개 기능의 관계를 정리해서 보여준다:
 
 ```
-┌─ CLAUDE.md ─── Claude가 매번 읽는 규칙
+┌─ Memory ────── CLAUDE.md(내 지시문) + Auto Memory(Claude의 메모)
 │
 ├─ Skill ─────── 반복 업무를 레시피로 저장
 │   └─ MCP ───── Slack, Calendar 등 외부 도구 연결
