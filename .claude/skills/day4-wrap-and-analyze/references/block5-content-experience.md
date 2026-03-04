@@ -61,10 +61,14 @@ X/Twitter URL을 받으면:
 
 | 체험 | 하는 일 | 시간 |
 |------|---------|------|
-| fetch-tweet 체험 | 실제 영어 트윗을 가져와서 번역 파이프라인 확인 | ~10분 |
-| Quiz-First 체험 | 가져온 콘텐츠로 퀴즈 풀어보기 | ~10분 |
+| fetch-tweet 체험 | 실제 영어 트윗을 가져와서 번역 파이프라인 확인 | ~5분 |
+| content-digest 체험 | 설치된 content-digest 스킬로 Quiz-First 학습 | ~5분 |
+| compound 체험 | 오늘 배운 인사이트를 구조화된 문서로 기록 | ~5분 |
+| team-assemble 소개 | 전문가 에이전트 팀 구성 개념 이해 | ~5분 |
 
 > 스킬을 직접 만들고 싶다면, 캠프 이후 `day5-fetch-and-digest` 스킬로 심화 학습할 수 있습니다.
+
+> **보너스 스킬**: compound는 작업 중 발견한 인사이트를 `knowledge/` 폴더에 구조화해서 저장합니다. team-assemble은 복잡한 작업을 전문가 에이전트 팀으로 나눠서 병렬 실행합니다. 둘 다 이미 설치되어 있으니 바로 체험할 수 있습니다.
 
 ---
 
@@ -85,17 +89,31 @@ Claude에게 이렇게 입력하세요:
 > - 인사이트가 실제로 유용한지
 > - 전체 번역이 자연스러운지
 
-### 체험 2: Quiz-First 학습
+### 체험 2: content-digest로 Quiz-First 학습
 
 방금 가져온 트윗 내용으로 퀴즈를 풀어봅니다:
 
 ```
-방금 가져온 트윗 내용으로 퀴즈 3개 내줘. 요약을 먼저 보여주지 말고, 퀴즈부터 내줘. Quiz-First 방식으로.
+/content-digest [방금 가져온 트윗 URL 또는 내용을 붙여넣기]
 ```
+
+> content-digest 스킬이 자동으로 Quiz-First 방식을 적용합니다. 요약을 먼저 보여주지 않고 퀴즈부터 출제합니다.
 
 > 퀴즈를 풀고 난 후의 느낌이 다릅니다:
 > - 틀린 문제가 있으면 "왜 틀렸지?"라는 호기심이 생깁니다
 > - 그 상태에서 내용을 다시 읽으면 기억에 더 잘 남습니다
+
+### 체험 3: compound로 인사이트 기록
+
+Day 4에서 가장 인상 깊었던 것을 compound 스킬로 기록해봅니다:
+
+```
+/compound
+```
+
+Claude가 인사이트를 어떤 도메인(work/learning/project/tool/personal)에 기록할지 물어볼 것입니다. 답변하면 구조화된 문서가 `knowledge/` 폴더에 생성됩니다.
+
+> 예: "session-wrap을 만들면서 multi-agent 패턴의 핵심이 '병렬 실행 + 중복 검증'이라는 걸 알게 됐다"
 
 ### (선택) 나만의 콘텐츠 파이프라인 구상
 
@@ -108,6 +126,16 @@ Claude에게 이렇게 입력하세요:
 ```
 나는 [분야]에 관심이 있어. 콘텐츠 소화 파이프라인을 어떻게 구성하면 좋을지 제안해줘.
 ```
+
+### (선택) team-assemble 맛보기
+
+여러 에이전트가 협력하는 팀을 구성해볼 수 있습니다:
+
+```
+/team-assemble 내 프로젝트의 README를 분석하고, 개선점을 제안하고, 실제로 수정해줘
+```
+
+> team-assemble은 작업을 분석 → 팀 설계 → 병렬 실행 → 검증까지 자동으로 진행합니다. session-wrap에서 배운 multi-agent 패턴이 실전에서 어떻게 쓰이는지 체감할 수 있습니다.
 
 ---
 
@@ -153,7 +181,7 @@ AskUserQuestion({
 | Day 1 | Claude Code 핵심 기능 7개 | Memory, 첫 스킬, Plugin 설치 |
 | Day 2 | MCP + Context Sync | MCP 연결, Context Sync 스킬 |
 | Day 3 | Clarify + Plugin + GitHub | 나만의 Clarify 스킬, PRD 제출 |
-| Day 4 | Wrap & Analyze + 콘텐츠 소화 | session-wrap 스킬, 콘텐츠 체험 |
+| Day 4 | Wrap & Analyze + 콘텐츠 소화 | session-wrap 스킬, content-digest 체험, compound 기록, team-assemble 소개 |
 
 > **수료가 아니라 시작입니다.** Claude Code라는 불을 다루는 신인류 커뮤니티의 일원이 되었습니다.
 > 만든 스킬을 매일 사용하면서 개선해보세요. 실제 사용이 최고의 학습입니다.

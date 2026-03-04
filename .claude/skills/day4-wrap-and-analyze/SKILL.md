@@ -27,6 +27,9 @@ description: AI Native Camp Day 4 Wrap & Analyze + 콘텐츠 소화. session-wra
 | **digest** | 가져온 내용을 소화(요약·퀴즈·학습)하는 것. "읽고 끝이 아니라 씹어서 내 것으로 만들기" |
 | **스킬 체이닝** | 하나의 스킬 결과를 다른 스킬의 입력으로 연결하는 것. "fetch → digest 파이프라인" |
 | **Quiz-First** | 요약을 먼저 보지 않고 퀴즈부터 푸는 학습법. 9-12% 기억력 향상 효과 |
+| **compound** | 작업 중 검증된 인사이트를 구조화된 문서로 기록하는 스킬. "배운 것을 노트에 정리하고 나중에 검색" |
+| **team-assemble** | 복잡한 작업을 전문가 팀으로 나눠서 병렬 실행하는 스킬. "프로젝트별 TF팀 자동 구성" |
+| **content-digest** | 가져온 콘텐츠를 Quiz-First 방식으로 소화하는 스킬. "읽기만 하지 말고 퀴즈로 체화" |
 
 ---
 
@@ -102,8 +105,8 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 | 2 | 실행 & 검증 | ~15분 |
 | 3 | History Insight | ~10분 |
 | 4 | Session Analyzer | ~15분 |
-| 5 | 콘텐츠 소화 체험 + 마무리 | ~20분 |
-| **합계** | | **~100분** |
+| 5 | 콘텐츠 소화 체험 + 보너스 스킬 + 마무리 | ~25분 |
+| **합계** | | **~105분** |
 
 > 참가자 속도에 따라 90~110분 소요될 수 있습니다. Block 1이 가장 시간이 오래 걸리는 핵심 블록입니다. Block 5(콘텐츠 소화)는 체험 중심이라 빠르게 진행됩니다.
 
@@ -118,7 +121,9 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 3. Block 2에서 직접 만든 스킬을 실행하고 결과를 확인한다
 4. Block 3에서 history-insight로 과거 세션 기록을 분석한다
 5. Block 4에서 session-analyzer로 스킬 실행을 검증한다
-6. Block 5에서 콘텐츠 소화 파이프라인(fetch-tweet + Quiz-First)을 체험한다
+6. Block 5에서 콘텐츠 소화 파이프라인(fetch-tweet + content-digest)을 체험한다
+7. Block 5에서 content-digest로 콘텐츠 소화 파이프라인(fetch-tweet → content-digest)을 체험한다
+8. Block 5 선택 실습에서 compound로 인사이트를 기록하고, team-assemble로 에이전트 팀 구성을 경험한다
 
 > session-wrap 원본은 플러그인에 설치되어 있다. 참가자는 이를 참고하면서 자기만의 버전을 만든다.
 
@@ -131,7 +136,7 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 - **Block 2 (실행 & 검증)**: Phase A에서 만든 스킬 실행 + 결과 확인 안내 → Stop. Phase B에서 실행 결과 퀴즈.
 - **Block 3 (History Insight)**: Phase A에서 history-insight 스킬 소개 + 실행 안내 → Stop. Phase B에서 퀴즈.
 - **Block 4 (Session Analyzer)**: Phase A에서 session-analyzer 소개 + 실행 안내 → Stop. Phase B에서 퀴즈.
-- **Block 5 (콘텐츠 소화 체험)**: Phase A에서 fetch-tweet과 Quiz-First 개념 설명 + 실제 트윗으로 체험 안내 → Stop. Phase B에서 종합 퀴즈 + 4일 캠프 마무리.
+- **Block 5 (콘텐츠 소화 체험)**: Phase A에서 fetch-tweet과 content-digest 개념 설명 + 실제 트윗으로 체험 안내 + compound/team-assemble 소개 → Stop. Phase B에서 종합 퀴즈 + 4일 캠프 마무리.
 
 ---
 
@@ -144,7 +149,7 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 | Block 2 | `references/block2-run-session-wrap.md` | 만든 스킬 실행 + 검증 |
 | Block 3 | `references/block3-history-insight.md` | history-insight 실습 |
 | Block 4 | `references/block4-session-analyzer.md` | session-analyzer 실습 |
-| Block 5 | `references/block5-content-experience.md` | 콘텐츠 소화 체험 (fetch-tweet + Quiz-First) |
+| Block 5 | `references/block5-content-experience.md` | 콘텐츠 소화 체험 (fetch-tweet + content-digest + 보너스 스킬) |
 
 > 파일 경로는 이 SKILL.md 기준 상대경로다.
 > 각 reference 파일은 `## EXPLAIN`, `## EXECUTE`, `## QUIZ` 섹션으로 구성된다.
@@ -165,7 +170,10 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 
 스킬 시작 시 **먼저 최신 커리큘럼을 설치**한 뒤 블록을 선택한다.
 
-### Step 1: 최신 스킬 설치
+### Step 1: 최신 스킬 업데이트 (필수!)
+
+> **Day 4부터 새로운 스킬이 대거 추가되었습니다!** 아래 명령어로 반드시 업데이트하세요.
+> 업데이트하지 않으면 오늘 실습에서 사용할 스킬이 없습니다.
 
 아래 명령어를 출력하고 Bash로 실행한다:
 
@@ -173,7 +181,17 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 npx skills add ai-native-camp/camp-2 --agent claude-code --yes
 ```
 
-실행 결과를 간략히 안내한다 (예: "스킬이 최신 버전으로 설치되었습니다").
+실행 결과를 간략히 안내하고, 새로 추가된 스킬 목록을 보여준다:
+
+| 새로 추가된 스킬 | 설명 |
+|-----------------|------|
+| session-wrap | 세션 종료 시 작업을 자동 정리하는 multi-agent 스킬 |
+| history-insight | 과거 세션 기록을 분석해 인사이트를 추출 |
+| session-analyzer | 스킬이 의도대로 실행됐는지 검증 |
+| fetch-tweet | X/Twitter 트윗을 가져와서 번역·요약 |
+| content-digest | 콘텐츠를 Quiz-First 방식으로 소화·학습 |
+| compound | 작업 중 발견한 인사이트를 구조화된 문서로 축적 |
+| team-assemble | 복잡한 작업을 전문가 에이전트 팀으로 분해·실행 |
 
 ### Step 2: 블록 선택
 
@@ -198,7 +216,7 @@ AskUserQuestion({
       {"label": "스킬 만들기 (Block 1)", "description": "개념을 이미 알면 바로 스킬 작성하기"},
       {"label": "실행 & 검증 (Block 2)", "description": "스킬을 이미 만들었으면 실행 + 결과 확인"},
       {"label": "분석 도구 (Block 3~4)", "description": "history-insight와 session-analyzer 실습부터"},
-      {"label": "콘텐츠 소화 (Block 5)", "description": "fetch-tweet + Quiz-First 체험"}
+      {"label": "콘텐츠 소화 (Block 5)", "description": "fetch-tweet + content-digest + compound + team-assemble 체험"}
     ],
     "multiSelect": false
   }]
