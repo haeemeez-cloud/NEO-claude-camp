@@ -79,8 +79,8 @@ AskUserQuestion({
     "question": "Notion을 사용하고 계신가요?",
     "header": "Notion 확인",
     "options": [
-      {"label": "네, Notion 사용합니다", "description": "Notion MCP 서버로 연결합니다"},
-      {"label": "아니요, 다른 도구로 할게요", "description": "mcp_servers.py로 대체 서버를 검색합니다"}
+      {"label": "아니요, 다른 도구로 할게요", "description": "mcp_servers.py로 대체 서버를 검색합니다"},
+      {"label": "네, Notion 사용합니다", "description": "Notion MCP 서버로 연결합니다"}
     ],
     "multiSelect": false
   }]
@@ -134,7 +134,7 @@ Claude에게 요청: "Notion에서 최근 수정된 페이지 보여줘"
 
 기대 결과:
   - Notion workspace의 페이지 목록이 출력됨
-  - 또는 특정 데이터베이스의 항목이 출력됨
+  - 경영 대시보드, KPI 추적, 의사결정 기록 등의 페이지가 보임
 ```
 
 ### Step 5: 스킬 소스 2 채우기
@@ -160,6 +160,8 @@ Notion MCP 서버의 도구를 사용하여 데이터베이스를 조회한다.
   mcp__notion__query_database(database_id="{id}")
 
 추출할 정보:
+- 경영 대시보드 최신 상태
+- KPI 추적 현황
 - 진행 중인 태스크
 - 기한이 임박한 항목
 - 최근 업데이트된 페이지
@@ -167,10 +169,10 @@ Notion MCP 서버의 도구를 사용하여 데이터베이스를 조회한다.
 
 > 스킬 파일의 진행 상황:
 > ```
-> 소스 1: Slack     ✅ 채움!
-> 소스 2: Notion    ✅ 채움!
-> 소스 3: Linear    [STUB]
-> 소스 4: Google    [STUB]
+> 소스 1: Slack        ✅ 채움!
+> 소스 2: Notion       ✅ 채움!
+> 소스 3: Google Drive [STUB]
+> 소스 4: Google Cal/Gmail [STUB]
 > ```
 
 ## QUIZ
@@ -182,8 +184,8 @@ AskUserQuestion({
       "question": "`claude mcp add --transport http` 에서 `--transport http`의 의미는?",
       "header": "Quiz 7-1",
       "options": [
-        {"label": "보안 연결이라는 뜻", "description": "보안과는 다른 개념"},
         {"label": "로컬 컴퓨터에서 실행한다는 뜻", "description": "로컬 실행은 stdio 방식"},
+        {"label": "보안 연결이라는 뜻", "description": "보안과는 다른 개념"},
         {"label": "클라우드 웹 서버에 연결한다는 뜻", "description": "HTTP = 인터넷을 통한 원격 연결"}
       ],
       "multiSelect": false
@@ -192,9 +194,9 @@ AskUserQuestion({
       "question": "`claude mcp add` 명령어를 실행하면 어떤 파일이 자동으로 생성되나요?",
       "header": "Quiz 7-2",
       "options": [
-        {"label": "CLAUDE.md", "description": "CLAUDE.md는 Claude의 지시사항 파일"},
+        {"label": "SKILL.md", "description": "SKILL.md는 스킬 정의 파일"},
         {"label": ".mcp.json", "description": "프로젝트 루트에 MCP 서버 설정이 저장됨"},
-        {"label": "SKILL.md", "description": "SKILL.md는 스킬 정의 파일"}
+        {"label": "CLAUDE.md", "description": "CLAUDE.md는 Claude의 지시사항 파일"}
       ],
       "multiSelect": false
     }

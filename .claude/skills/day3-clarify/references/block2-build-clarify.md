@@ -45,11 +45,11 @@ description: ...trigger on...         ← 언제 이 스킬이 호출되는지
 
 | 커스터마이즈 포인트 | 원본 | 자기 버전 예시 |
 |-------------------|------|--------------|
-| **트리거 키워드** | "clarify", "spec this out" | "기획 정리", "요구사항 뽀개기" |
-| **사용 상황** | 기능 요청, 버그 리포트 | 마케팅 캠페인, 콘텐츠 기획 |
-| **모호함 카테고리** | Scope, Behavior, Interface... | 대상, 톤앤매너, 채널, 기한... |
+| **트리거 키워드** | "clarify", "spec this out" | "회의 준비", "보고서 정리", "현황 파악" |
+| **사용 상황** | 일반 업무 요청, 이슈 보고 | 경영회의 준비, 인사 현황 보고, 예산 정리 |
+| **모호함 카테고리** | Scope, Behavior, Interface... | 보고 대상, 형식, 기한, 데이터 범위... |
 | **질문 개수** | 5-8개 | 3-5개 (업무가 단순하면) |
-| **Before/After 포맷** | Goal, Scope, Constraints | 목표, 대상, 메시지, KPI |
+| **Before/After 포맷** | Goal, Scope, Constraints | 목표, 보고 대상, 포함 데이터, 기한 |
 
 ### 6단계 작성 가이드
 
@@ -104,9 +104,9 @@ AskUserQuestion({
       "question": "SKILL.md의 Protocol에서 Phase 2의 핵심은 무엇인가요?",
       "header": "Quiz 2-1",
       "options": [
-        {"label": "AskUserQuestion으로 가설 기반 질문을 반복한다", "description": "최대 4개씩 묶어서, 5-8개 상한"},
+        {"label": "Claude가 알아서 결정한다", "description": "가정하지 않는 것이 규칙"},
         {"label": "사용자에게 자유롭게 설명하게 한다", "description": "열린 질문은 Hypothesis-as-Options 위반"},
-        {"label": "Claude가 알아서 결정한다", "description": "가정하지 않는 것이 규칙"}
+        {"label": "AskUserQuestion으로 가설 기반 질문을 반복한다", "description": "최대 4개씩 묶어서, 5-8개 상한"}
       ],
       "multiSelect": false
     },
@@ -114,9 +114,9 @@ AskUserQuestion({
       "question": "Phase 3에서 반드시 보여줘야 하는 것은 무엇인가요?",
       "header": "Quiz 2-2",
       "options": [
+        {"label": "실행 코드", "description": "Clarify는 스펙을 만드는 과정, 코드는 그 다음"},
         {"label": "Before/After — 원본과 구체화된 요구사항의 비교", "description": "변환 과정을 시각화하여 확인"},
-        {"label": "질문 목록만 나열", "description": "질문보다 결과(변환된 스펙)가 중요"},
-        {"label": "실행 코드", "description": "Clarify는 스펙을 만드는 과정, 코드는 그 다음"}
+        {"label": "질문 목록만 나열", "description": "질문보다 결과(변환된 스펙)가 중요"}
       ],
       "multiSelect": false
     }
@@ -124,6 +124,6 @@ AskUserQuestion({
 })
 ```
 
-정답: Quiz 2-1은 1번. Phase 2의 핵심은 **AskUserQuestion으로 가설 기반 질문을 반복**하는 것이다. 관련 질문을 최대 4개씩 묶어서 효율적으로 물어본다.
+정답: Quiz 2-1은 3번. Phase 2의 핵심은 **AskUserQuestion으로 가설 기반 질문을 반복**하는 것이다. 관련 질문을 최대 4개씩 묶어서 효율적으로 물어본다.
 
-정답: Quiz 2-2는 1번. Phase 3의 핵심은 **Before/After 비교**다. 원래 모호했던 요구사항과 clarify 후 구체화된 스펙을 나란히 보여줘야 한다. 이 비교가 있어야 "이 과정이 의미 있었다"는 걸 실감할 수 있다.
+정답: Quiz 2-2는 2번. Phase 3의 핵심은 **Before/After 비교**다. 원래 모호했던 요구사항과 clarify 후 구체화된 스펙을 나란히 보여줘야 한다. 이 비교가 있어야 "이 과정이 의미 있었다"는 걸 실감할 수 있다.

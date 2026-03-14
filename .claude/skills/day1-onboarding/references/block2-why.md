@@ -22,17 +22,17 @@ AskUserQuestion({
     "question": "왜 굳이 터미널을 깔아서 Claude Code를 사용해야 할까요?",
     "header": "Quiz 1",
     "options": [
-      {"label": "CLI는 컴퓨터의 모든 일을 할 수 있어서", "description": "GUI는 버튼만 누를 수 있지만 CLI는 제한 없음"},
-      {"label": "터미널이 더 예뻐서", "description": "예쁜 건 GUI가 더 예쁨"},
       {"label": "프로그래머처럼 보이려고", "description": "멋은 부산물일 뿐"},
-      {"label": "Anthropic이 시켜서", "description": "아무도 안 시킴"}
+      {"label": "CLI는 컴퓨터의 모든 일을 할 수 있어서", "description": "GUI는 버튼만 누를 수 있지만 CLI는 제한 없음"},
+      {"label": "Anthropic이 시켜서", "description": "아무도 안 시킴"},
+      {"label": "터미널이 더 예뻐서", "description": "예쁜 건 GUI가 더 예쁨"}
     ],
     "multiSelect": false
   }]
 })
 ```
 
-정답: 1번. 해설로 아래 도식을 보여준다:
+정답: 2번 ("CLI는 컴퓨터의 모든 일을 할 수 있어서"). 해설로 아래 도식을 보여준다:
 
 ```
 GUI:  사용자 → [버튼] [버튼] [버튼] → 제한된 기능
@@ -50,17 +50,17 @@ AskUserQuestion({
     "question": "왜 CoWork 같은 비개발자용 툴이 아니라 터미널에서 Claude Code를 써야 할까요?",
     "header": "Quiz 2",
     "options": [
-      {"label": "모두가 코딩으로 새로운 차원의 일을 하게 될 것이라서", "description": "코딩 = 개발자 전유물이 아니라 모든 지식노동의 도구가 된다"},
-      {"label": "Claude CoWork 같은 비개발자용 도구가 더 나아서", "description": "CoWork도 좋지만 터미널이 자유도의 끝판왕"},
       {"label": "터미널이 무료라서", "description": "둘 다 유료"},
-      {"label": "개발자만 쓸 수 있어서", "description": "비개발자도 씀. 지금 여기서."}
+      {"label": "개발자만 쓸 수 있어서", "description": "비개발자도 씀. 지금 여기서."},
+      {"label": "모두가 코딩으로 새로운 차원의 일을 하게 될 것이라서", "description": "코딩 = 개발자 전유물이 아니라 모든 지식노동의 도구가 된다"},
+      {"label": "Claude CoWork 같은 비개발자용 도구가 더 나아서", "description": "CoWork도 좋지만 터미널이 자유도의 끝판왕"}
     ],
     "multiSelect": false
   }]
 })
 ```
 
-정답: 1번. 해설:
+정답: 3번 ("모두가 코딩으로 새로운 차원의 일을 하게 될 것이라서"). 해설:
 
 ```
 Cursor, CoWork 같은 도구 → 정해진 UI 안에서의 생산성

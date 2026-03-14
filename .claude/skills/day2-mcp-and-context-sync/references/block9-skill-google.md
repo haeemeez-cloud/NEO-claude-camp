@@ -49,8 +49,8 @@ my-plugin/
 공식 Plugin 외에 커뮤니티에서 만든 Plugin도 있다. 오늘은 **team-attention/plugins-for-claude-natives**에서 Google Calendar/Gmail Plugin을 설치한다.
 
 이 Plugin은 비개발자를 위해 설계된 것으로:
-- Google Calendar: 일정 조회, 생성, 수정
-- Gmail: 이메일 조회, 발송, 검색
+- Google Calendar: 회의 일정 조회, 생성, 수정
+- Gmail: 업무 메일 조회, 발송, 검색
 - 설치만 하면 MCP 서버가 자동 등록되어 바로 사용 가능
 
 ### 4가지 연결 방법 총정리
@@ -59,8 +59,8 @@ my-plugin/
 |---|------|-------|------|--------|------|
 | 1 | Connector | 6 | Slack | ★☆☆☆ | 브라우저 클릭 |
 | 2 | `claude mcp add` | 7 | Notion | ★★☆☆ | CLI 명령어 |
-| 3 | Official Plugin | 8 | Linear | ★★★☆ | 공식 패키지 |
-| 4 | **커뮤니티 Plugin** | **9** | **Google** | **★★★★** | **구조 이해 + 설치** |
+| 3 | Official Plugin | 8 | Google Drive | ★★★☆ | 공식 패키지 |
+| 4 | **커뮤니티 Plugin** | **9** | **Google Cal/Gmail** | **★★★★** | **구조 이해 + 설치** |
 
 ### Plan B: Google 서비스가 없다면?
 
@@ -84,9 +84,9 @@ AskUserQuestion({
     "question": "Google Calendar과 Gmail 중 어떤 것을 연결할까요?",
     "header": "Google 도구 선택",
     "options": [
-      {"label": "Google Calendar", "description": "일정 조회/관리"},
-      {"label": "Gmail", "description": "이메일 조회/관리"},
-      {"label": "둘 다", "description": "Calendar + Gmail 모두 연결"},
+      {"label": "둘 다", "description": "Calendar(회의 일정) + Gmail(업무 메일) 모두 연결"},
+      {"label": "Google Calendar", "description": "회의 일정 조회/관리"},
+      {"label": "Gmail", "description": "업무 메일 조회/관리"},
       {"label": "Skip", "description": "Plugin 구조 분석만 하고 넘어가기"}
     ],
     "multiSelect": false
@@ -147,8 +147,8 @@ Claude가 수행:
 → 연결 상태가 정상인지
 
 테스트:
-  Calendar: "이번 주 일정 보여줘"
-  Gmail: "안 읽은 이메일 보여줘"
+  Calendar: "이번 주 회의 일정 보여줘"
+  Gmail: "안 읽은 업무 메일 보여줘"
 ```
 
 > Google 인증이 필요할 수 있다. 브라우저에서 Google 계정으로 로그인하고 "허용"을 클릭한다.
@@ -171,20 +171,20 @@ Plugin의 MCP 도구를 사용하여 일정/이메일을 조회한다.
   (도구명은 /mcp에서 확인한 것으로 교체)
 
 추출할 정보:
-- 오늘의 일정 + 이번 주 주요 미팅
-- 안 읽은 이메일 요약
-- 회신이 필요한 이메일
+- 오늘의 회의 일정 + 이번 주 주요 미팅 (경영회의, 팀장회의 등)
+- 안 읽은 업무 메일 요약
+- 회신이 필요한 메일
 - 준비가 필요한 미팅
 ```
 
 > 스킬 파일의 진행 상황:
 > ```
-> 소스 1: Slack     ✅ 채움!
-> 소스 2: Notion    ✅ 채움!
-> 소스 3: Linear    ✅ 채움!
-> 소스 4: Google    ✅ 채움!
-> 실행 흐름         [STUB - Block 10에서 완성]
-> 출력 포맷         [STUB - Block 10에서 완성]
+> 소스 1: Slack        ✅ 채움!
+> 소스 2: Notion       ✅ 채움!
+> 소스 3: Google Drive ✅ 채움!
+> 소스 4: Google Cal/Gmail ✅ 채움!
+> 실행 흐름             [STUB - Block 10에서 완성]
+> 출력 포맷             [STUB - Block 10에서 완성]
 > ```
 
 ## QUIZ
@@ -196,8 +196,8 @@ AskUserQuestion({
       "question": "Plugin 루트에 있는 `.mcp.json` 파일의 역할은?",
       "header": "Quiz 9-1",
       "options": [
-        {"label": "Plugin의 이름과 버전 정보", "description": "그건 plugin.json의 역할"},
         {"label": "Claude Code의 보안 설정", "description": "보안 설정과는 다른 파일"},
+        {"label": "Plugin의 이름과 버전 정보", "description": "그건 plugin.json의 역할"},
         {"label": "Plugin 설치 시 MCP 서버를 자동으로 활성화하는 설정", "description": "이 파일이 있어서 claude mcp add가 필요 없는 것"}
       ],
       "multiSelect": false
@@ -206,9 +206,9 @@ AskUserQuestion({
       "question": "4가지 연결 방법 중 가장 많은 것을 한 번에 설치하는 방법은?",
       "header": "Quiz 9-2",
       "options": [
+        {"label": "claude mcp add", "description": "mcp add는 MCP 서버 하나만 등록"},
         {"label": "Connector", "description": "Connector는 MCP 연결만 제공"},
-        {"label": "Plugin (MCP + 스킬 + 설정 + 훅 포함)", "description": "패키지이므로 여러 구성요소를 한 번에 설치"},
-        {"label": "claude mcp add", "description": "mcp add는 MCP 서버 하나만 등록"}
+        {"label": "Plugin (MCP + 스킬 + 설정 + 훅 포함)", "description": "패키지이므로 여러 구성요소를 한 번에 설치"}
       ],
       "multiSelect": false
     },
@@ -216,8 +216,8 @@ AskUserQuestion({
       "question": "Plugin 구조를 이해하면 무엇이 가능해지나요?",
       "header": "Quiz 9-3",
       "options": [
-        {"label": "Claude Code를 더 빠르게 실행할 수 있다", "description": "속도와는 관계없음"},
         {"label": "다른 사람의 Plugin을 삭제할 수 있다", "description": "삭제와는 관계없음"},
+        {"label": "Claude Code를 더 빠르게 실행할 수 있다", "description": "속도와는 관계없음"},
         {"label": "나만의 Plugin을 만들 수 있다", "description": "구조를 알면 직접 제작 가능"}
       ],
       "multiSelect": false
@@ -226,7 +226,7 @@ AskUserQuestion({
 })
 ```
 
-정답: Quiz 9-1은 3번, Quiz 9-2는 2번, Quiz 9-3은 3번.
+정답: Quiz 9-1은 3번, Quiz 9-2는 3번, Quiz 9-3은 3번.
 - `.mcp.json`은 Plugin 루트에 위치하며, **Plugin 설치 시 MCP 서버를 자동으로 활성화**하는 설정 파일이다. Block 8에서 "claude mcp add 안 했는데!" 했던 비밀이 바로 이 파일이다.
 - **Plugin**은 MCP + 스킬 + 설정 + 훅을 한꺼번에 설치하므로, 4가지 방법 중 가장 많은 것을 한 번에 처리한다.
 - Plugin 구조를 이해하면 **나만의 Plugin을 만들 수 있다.** "쓸 줄 아는 사람"에서 "만들 줄 아는 사람"으로 레벨업하는 것이다.

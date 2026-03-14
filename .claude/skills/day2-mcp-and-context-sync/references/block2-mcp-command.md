@@ -120,7 +120,7 @@ context7으로 React의 useEffect 사용법을 검색해줘
 
 Slack이 있다면:
 ```
-Slack에서 가장 최근 메시지 5개를 보여줘
+Slack에서 #경영회의 채널의 최근 메시지 5개를 보여줘
 ```
 
 Fetch가 있다면:
@@ -136,14 +136,14 @@ AskUserQuestion({
     "question": "/mcp 명령어의 주요 역할은?",
     "header": "Quiz 2",
     "options": [
-      {"label": "연결된 MCP 서버 상태와 도구 목록 확인", "description": "서버 연결 상태, 제공 도구, OAuth 인증까지"},
       {"label": "새 MCP 서버를 설치하는 명령어", "description": "설치는 claude mcp add로 함"},
-      {"label": "MCP 서버를 삭제하는 명령어", "description": "삭제는 claude mcp remove로 함"}
+      {"label": "MCP 서버를 삭제하는 명령어", "description": "삭제는 claude mcp remove로 함"},
+      {"label": "연결된 MCP 서버 상태와 도구 목록 확인", "description": "서버 연결 상태, 제공 도구, OAuth 인증까지"}
     ],
     "multiSelect": false
   }]
 })
 ```
 
-정답: 1번.
+정답: 3번.
 피드백: "맞습니다! /mcp = 현황 파악. 설치는 `claude mcp add`, 삭제는 `claude mcp remove`입니다. /mcp는 '지금 뭐가 연결되어 있지?' 할 때 씁니다."

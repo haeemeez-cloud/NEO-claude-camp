@@ -13,11 +13,13 @@ CLI, git, GitHub, 에디터 기초를 퀴즈와 함께 배운다.
 
 | 명령어 | 의미 | 비유 |
 |--------|------|------|
-| cd 폴더명 | 폴더 이동 | 파인더에서 폴더 더블클릭 |
+| cd 폴더명 | 폴더 이동 | 파일 탐색기에서 폴더 더블클릭 |
 | ls | 목록 보기 | 폴더 열어서 뭐 있나 보기 |
-| pwd | 현재 위치 | 주소창 보기 |
+| pwd | 현재 위치 | 파일 탐색기 주소창 보기 |
 | cat 파일명 | 파일 내용 보기 | 메모장으로 파일 열어보기 |
-| open 파일명 | 파일/폴더 열기 | 파인더에서 더블클릭 (Mac 전용) |
+| start 파일명 | 파일/폴더 열기 | 파일 탐색기에서 더블클릭 (Windows) |
+
+> Git Bash에서는 위 명령어가 모두 동작한다. PowerShell/CMD에서는 `ls` 대신 `dir`, `cat` 대신 `Get-Content`를 쓰지만, Git Bash를 쓰면 신경 쓸 필요 없다.
 
 이 5개면 충분하다. Claude Code가 나머지는 다 해준다.
 
@@ -54,8 +56,8 @@ git은 실행 취소의 끝판왕이다. 뭘 해도 돌아갈 수 있다.
 
 | 에디터 | 특징 | 추천 대상 |
 |--------|------|-----------|
+| VSCode | 범용적, 확장 풍부, 회사에서 이미 사용 중일 가능성 높음 | **대부분의 참가자** |
 | Cursor | AI 내장, CC 시너지 | 코드 편집도 할 분 |
-| VSCode | 범용적, 확장 풍부 | 이미 쓰고 계신 분 |
 | Antigravity | CC 전용, 가장 간단 | 처음 시작하는 분 |
 
 "이 캠프에서는 터미널에서 claude만 쳐도 충분합니다."
@@ -107,10 +109,10 @@ AskUserQuestion({
     "question": "방금 Claude가 현재 폴더 위치를 알려줄 때 사용한 명령어는?",
     "header": "Quiz 3",
     "options": [
-      {"label": "pwd", "description": "Print Working Directory — 현재 위치 출력"},
-      {"label": "ls", "description": "목록 보기"},
+      {"label": "where", "description": "이런 명령어는 없음"},
       {"label": "cd", "description": "폴더 이동"},
-      {"label": "where", "description": "이런 명령어는 없음"}
+      {"label": "pwd", "description": "Print Working Directory — 현재 위치 출력"},
+      {"label": "ls", "description": "목록 보기"}
     ],
     "multiSelect": false
   }]
@@ -128,10 +130,10 @@ AskUserQuestion({
     "question": "방금 Claude가 최근 커밋을 보여줬죠. git에서 '게임 세이브'에 해당하는 동작은?",
     "header": "Quiz 4",
     "options": [
-      {"label": "git commit", "description": "현재 상태를 저장"},
-      {"label": "git clone", "description": "폴더 다운로드"},
       {"label": "git push", "description": "업로드"},
-      {"label": "git save", "description": "이런 명령어는 없음"}
+      {"label": "git save", "description": "이런 명령어는 없음"},
+      {"label": "git clone", "description": "폴더 다운로드"},
+      {"label": "git commit", "description": "현재 상태를 저장"}
     ],
     "multiSelect": false
   }]
@@ -149,10 +151,10 @@ AskUserQuestion({
     "question": "GitHub에서 '이렇게 바꿨는데 괜찮아?' 하고 리뷰를 요청하는 것은?",
     "header": "Quiz 5",
     "options": [
-      {"label": "Pull Request (PR)", "description": "변경사항 리뷰 요청"},
       {"label": "Merge", "description": "리뷰 통과 후 합치기"},
-      {"label": "git push", "description": "업로드"},
-      {"label": "Issue", "description": "버그/기능 요청 등록"}
+      {"label": "Issue", "description": "버그/기능 요청 등록"},
+      {"label": "Pull Request (PR)", "description": "변경사항 리뷰 요청"},
+      {"label": "git push", "description": "업로드"}
     ],
     "multiSelect": false
   }]

@@ -16,7 +16,7 @@
 | **MCP 서버 GitHub** | https://github.com/modelcontextprotocol/servers | 전체 목록 (레퍼런스 + 서드파티) |
 | **MCP Registry** | https://registry.modelcontextprotocol.io | 최신 서버 검색 |
 
-### 비개발자에게 추천하는 인기 서버
+### 경영지원 업무에 유용한 인기 서버
 
 #### 커뮤니케이션
 
@@ -31,9 +31,9 @@
 |------|--------------|-------------|
 | **Notion** | 페이지 읽기/쓰기, DB 쿼리 | `claude mcp add --transport http notion https://mcp.notion.com/mcp` |
 | **Google Calendar** | 일정 조회/생성 | 별도 설정 필요 (Google API) |
-| **Linear** | 이슈 관리, 프로젝트 추적 | `claude mcp add --transport http linear https://mcp.linear.app/sse` |
+| **Google Drive** | 문서 검색/읽기/공유 | 별도 설정 필요 (Google API) |
 
-#### 개발
+#### 개발/유틸리티
 
 | 서버 | 할 수 있는 것 | 추가 명령어 |
 |------|--------------|-------------|
@@ -57,7 +57,8 @@
   ├─ Slack 많이 쓴다 → Slack MCP
   ├─ Notion에 정보 정리 → Notion MCP
   ├─ 이메일 관리 → Gmail MCP
-  ├─ 코딩한다 → GitHub + Sentry MCP
+  ├─ 공유 문서 관리 → Google Drive MCP
+  ├─ 일정/회의 관리 → Google Calendar MCP
   └─ 웹 검색/리서치 → Fetch MCP
 ```
 
@@ -75,7 +76,7 @@ MCP 서버 (남이 만든 것)              나만의 Skill (직접 만든 것)
   └─ 모든 기능이 다 필요한 건 아님     └─ 진짜 효율적인 자동화
 ```
 
-예를 들어, Slack MCP를 설치하면 메시지를 읽고 보낼 수 있다. 하지만 **"매일 아침 3개 채널의 중요 메시지를 요약해서 Notion에 정리해줘"** 같은 나만의 워크플로우는 MCP만으로는 만들 수 없다.
+예를 들어, Slack MCP를 설치하면 메시지를 읽고 보낼 수 있다. 하지만 **"매일 아침 #경영회의, #인사공지, #이슈트래킹 채널의 중요 메시지를 요약해서 Notion 경영 대시보드에 정리해줘"** 같은 나만의 워크플로우는 MCP만으로는 만들 수 없다.
 
 > **결론: MCP로 시작하되, 진짜 효과적인 워크플로우를 원한다면 직접 Skill로 만들자.**
 > Day 2에서 이걸 직접 해본다!
@@ -117,14 +118,14 @@ AskUserQuestion({
     "question": "MCP 서버를 선택할 때 가장 좋은 기준은?",
     "header": "Quiz 3",
     "options": [
+      {"label": "가장 기술적으로 복잡한 것", "description": "복잡할수록 좋은 게 아님"},
       {"label": "내가 매일 쓰는 도구부터 1~2개", "description": "실제 업무에서 바로 활용할 수 있는 것"},
-      {"label": "인기 순위 1위부터 전부 설치", "description": "안 쓰는 서버는 리소스 낭비"},
-      {"label": "가장 기술적으로 복잡한 것", "description": "복잡할수록 좋은 게 아님"}
+      {"label": "인기 순위 1위부터 전부 설치", "description": "안 쓰는 서버는 리소스 낭비"}
     ],
     "multiSelect": false
   }]
 })
 ```
 
-정답: 1번.
+정답: 2번.
 피드백: "맞습니다! 매일 쓰는 도구부터 연결하면 바로 체감할 수 있습니다. 나중에 필요할 때 하나씩 추가하면 됩니다."

@@ -85,7 +85,7 @@ Anthropic 공식 외에도 커뮤니티가 만든 플러그인이 있다. 마켓
 /plugin install superpowers@superpowers-marketplace
 ```
 
-> superpowers는 TDD, 디버깅, 코드리뷰 등 개발 워크플로우를 강화하는 플러그인이다.
+> superpowers는 TDD, 디버깅, 코드리뷰 등 워크플로우를 강화하는 플러그인이다.
 
 **3단계: 설치된 플러그인의 MCP 확인**
 
@@ -105,14 +105,14 @@ AskUserQuestion({
     "question": "Plugin에 MCP 서버가 포함되어 있으면?",
     "header": "Quiz 4",
     "options": [
-      {"label": "설치하면 MCP 서버가 자동으로 연결된다", "description": "claude mcp add 없이 자동 설정"},
+      {"label": "MCP와 Plugin은 관련 없다", "description": "Plugin은 MCP를 포함할 수 있음"},
       {"label": "별도로 claude mcp add를 해야 한다", "description": "Plugin이 자동 처리"},
-      {"label": "MCP와 Plugin은 관련 없다", "description": "Plugin은 MCP를 포함할 수 있음"}
+      {"label": "설치하면 MCP 서버가 자동으로 연결된다", "description": "claude mcp add 없이 자동 설정"}
     ],
     "multiSelect": false
   }]
 })
 ```
 
-정답: 1번.
+정답: 3번.
 피드백: "정확합니다! Plugin의 큰 장점이 바로 이겁니다. 복잡한 설정 없이 설치 한 줄이면 MCP 서버까지 자동 연결됩니다."

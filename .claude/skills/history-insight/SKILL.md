@@ -54,7 +54,7 @@ find ~/.claude/projects -name "*.jsonl" -type f
 ```
 
 **날짜 필터링**: 파일의 mtime(수정시간) 확인 후 필터. OS별 `stat` 옵션 다름:
-- macOS: `stat -f "%Sm" -t "%Y-%m-%d" <file>`
+- Windows (Git Bash): `stat -c "%y" <file>`
 - Linux: `stat -c "%y" <file>`
 
 ---
@@ -125,7 +125,7 @@ ${baseDir}/scripts/extract-session.sh <session.jsonl>
 |----------|----------|
 | No session files found | "No session files found for this project." |
 | File too large | Auto-preprocess with extract-session.sh |
-| jq not installed | "Error: jq is required. Install with: brew install jq" |
+| jq not installed | "Error: jq is required. Install with: Git Bash에서 `curl -L -o /usr/bin/jq.exe https://github.com/jqlang/jq/releases/latest/download/jq-windows-amd64.exe` 또는 Python으로 대체" |
 | Task failed | "Warning: Could not process [file]. Skipping." |
 | 0 relevant sessions | "No sessions matched your criteria." |
 

@@ -63,8 +63,8 @@ AskUserQuestion({
     "question": "Slack을 사용하고 계신가요?\n\n⚠️ 회사 Slack은 관리자 정책상 외부 앱 연결이 차단될 수 있습니다.",
     "header": "Slack 확인",
     "options": [
-      {"label": "네, Slack 연결합니다", "description": "Connector로 Slack을 연결합니다"},
       {"label": "회사 계정이라 안 될 것 같아요", "description": "개인 Slack이나 AI Native Camp Slack으로 연결합니다"},
+      {"label": "네, Slack 연결합니다", "description": "Connector로 Slack을 연결합니다"},
       {"label": "Slack 안 씁니다, skip할게요", "description": "이 블록을 건너뛰고 Block 7로 이동합니다"}
     ],
     "multiSelect": false
@@ -107,7 +107,7 @@ Claude에게 요청: "Slack 채널 목록 보여줘"
 
 기대 결과:
   - Slack 워크스페이스의 채널 목록이 출력됨
-  - 또는 특정 채널의 최근 메시지가 출력됨
+  - 또는 #경영회의, #인사공지 등 채널의 최근 메시지가 출력됨
 ```
 
 > 테스트에서 에러가 발생하면 Connectors 페이지에서 연결을 해제했다가 다시 연결해본다.
@@ -129,10 +129,11 @@ STUB을 실제 내용으로 교체:
 
 수집할 채널 목록:
 (테스트에서 확인한 실제 채널명으로 채운다)
+예시: #경영회의, #전략, #이슈트래킹, #인사공지
 
 수집 방법:
 각 채널에 대해 mcp__claude_ai_Slack__slack_read_channel 호출.
-  mcp__claude_ai_Slack__slack_read_channel(channel="general", limit=50)
+  mcp__claude_ai_Slack__slack_read_channel(channel="경영회의", limit=50)
 
 추출할 정보:
 - 중요 공지사항
@@ -143,10 +144,10 @@ STUB을 실제 내용으로 교체:
 
 > 스킬 파일의 진행 상황:
 > ```
-> 소스 1: Slack     ✅ 채움!
-> 소스 2: Notion    [STUB]
-> 소스 3: Linear    [STUB]
-> 소스 4: Google    [STUB]
+> 소스 1: Slack        ✅ 채움!
+> 소스 2: Notion       [STUB]
+> 소스 3: Google Drive [STUB]
+> 소스 4: Google Cal/Gmail [STUB]
 > ```
 
 ## QUIZ
@@ -159,8 +160,8 @@ AskUserQuestion({
       "header": "Quiz 6-1",
       "options": [
         {"label": "local 섹션", "description": "local은 claude mcp add로 연결한 것"},
-        {"label": "plugin 섹션", "description": "plugin은 /plugin으로 설치한 것"},
-        {"label": "claude.ai 섹션", "description": "Connector는 claude.ai 클라우드를 통해 연결"}
+        {"label": "claude.ai 섹션", "description": "Connector는 claude.ai 클라우드를 통해 연결"},
+        {"label": "plugin 섹션", "description": "plugin은 /plugin으로 설치한 것"}
       ],
       "multiSelect": false
     },
@@ -168,9 +169,9 @@ AskUserQuestion({
       "question": "Connector의 가장 큰 장점은?",
       "header": "Quiz 6-2",
       "options": [
-        {"label": "모든 도구를 연결할 수 있다", "description": "Connector가 지원하는 서비스만 가능"},
         {"label": "가장 빠르다", "description": "속도보다는 편의성이 핵심 장점"},
-        {"label": "API 키 없이 브라우저 로그인만으로 연결된다", "description": "클릭 몇 번이면 끝나는 가장 쉬운 방법"}
+        {"label": "API 키 없이 브라우저 로그인만으로 연결된다", "description": "클릭 몇 번이면 끝나는 가장 쉬운 방법"},
+        {"label": "모든 도구를 연결할 수 있다", "description": "Connector가 지원하는 서비스만 가능"}
       ],
       "multiSelect": false
     }
@@ -178,6 +179,6 @@ AskUserQuestion({
 })
 ```
 
-정답: Quiz 6-1은 3번, Quiz 6-2는 3번.
+정답: Quiz 6-1은 2번, Quiz 6-2는 2번.
 - Connector로 연결하면 `/mcp`의 **claude.ai 섹션**에 표시된다. 뒤에서 배울 `claude mcp add`는 local 섹션에 표시된다.
 - Connector의 최대 장점은 **API 키 없이 브라우저 로그인만으로** 연결된다는 것이다. 비개발자에게 가장 친절한 방법이다.

@@ -79,8 +79,10 @@ claude mcp add --transport http --scope user notion https://mcp.notion.com/mcp
 
 > `.mcp.json` 파일이 뭔지 궁금할 수 있다. **`claude mcp add` 명령어를 실행하면 Claude가 알아서 만들어주는 설정 파일**이다. 직접 열어서 편집할 일은 거의 없다.
 
+> **Windows 참고**: `user` scope 설정 파일은 `%USERPROFILE%\.claude\` (`~/.claude/`) 경로에 저장된다.
+
 <details>
-<summary>🔍 (참고) .mcp.json 파일의 구조가 궁금하다면</summary>
+<summary>(참고) .mcp.json 파일의 구조가 궁금하다면</summary>
 
 `project` scope로 서버를 추가하면 프로젝트 폴더에 `.mcp.json` 파일이 생긴다. 내용은 이런 형태다:
 
@@ -140,14 +142,14 @@ AskUserQuestion({
     "question": "클라우드 서비스(Notion, Sentry)에 연결할 때 추천하는 transport 방법은?",
     "header": "Quiz 1",
     "options": [
+      {"label": "FTP", "description": "MCP에서 FTP는 지원하지 않음"},
       {"label": "HTTP", "description": "클라우드 서비스 연결의 표준 방식"},
-      {"label": "stdio", "description": "stdio는 내 컴퓨터에서 로컬 실행할 때 사용"},
-      {"label": "FTP", "description": "MCP에서 FTP는 지원하지 않음"}
+      {"label": "stdio", "description": "stdio는 내 컴퓨터에서 로컬 실행할 때 사용"}
     ],
     "multiSelect": false
   }]
 })
 ```
 
-정답: 1번.
+정답: 2번.
 피드백: "정확합니다! 클라우드 = HTTP, 로컬 = stdio. 이 두 가지만 기억하면 됩니다."

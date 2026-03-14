@@ -33,7 +33,7 @@ AI (확률적)                    Hook (결정론적)
 먼저 Claude에게 물어보라고 안내한다:
 
 ```
-Hook이 뭔지 예시와 함께 설명해줘. 내 업무에서 쓸 수 있는 Hook 아이디어 3개도 제안해줘
+Hook이 뭔지 예시와 함께 설명해줘. 경영지원 업무에서 쓸 수 있는 Hook 아이디어 3개도 제안해줘
 ```
 
 ### 2단계: 직접 Hook 추가하기
@@ -46,6 +46,8 @@ Stop Hook을 추가해줘. 응답이 끝나면 현재 시간을 터미널에 출
 
 > Claude가 `.claude/settings.local.json`에 Stop 이벤트 Hook을 추가해줄 것이다.
 > 예시 결과: 응답이 끝날 때마다 `[완료] 14:32:05` 같은 시간이 터미널에 표시된다.
+>
+> ⚠️ **Windows 참고**: Hook 스크립트는 Git Bash에서 실행된다. Claude에게 "Git Bash용으로 만들어줘"라고 하면 호환되는 스크립트를 작성해준다.
 
 ## QUIZ
 
@@ -55,8 +57,8 @@ AskUserQuestion({
     "question": "Hook은 언제 실행되나요?",
     "header": "Quiz 3-6",
     "options": [
-      {"label": "특정 이벤트가 발생했을 때 자동으로", "description": "응답 완료, 도구 실행 등 이벤트 기반"},
       {"label": "내가 직접 실행할 때", "description": "자동 실행이 핵심"},
+      {"label": "특정 이벤트가 발생했을 때 자동으로", "description": "응답 완료, 도구 실행 등 이벤트 기반"},
       {"label": "매일 정해진 시간에", "description": "스케줄러와는 다름"}
     ],
     "multiSelect": false
@@ -64,4 +66,4 @@ AskUserQuestion({
 })
 ```
 
-정답: 1번.
+정답: 2번 ("특정 이벤트가 발생했을 때 자동으로").

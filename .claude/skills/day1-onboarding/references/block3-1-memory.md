@@ -17,7 +17,7 @@
 |------|------|
 | 근본 원리 | **시스템 프롬프트** — AI가 대화를 시작할 때 가장 먼저 읽는 지시문. 매 세션마다 규칙을 주입하여 AI의 휘발성 기억을 영구 기억으로 만든다 |
 | 비유 | 팀 위키 — Claude가 매 대화 시작할 때 읽는 규칙서 |
-| 예시 | "항상 존댓말로", "표로 정리해줘", "내 이름은 OOO" |
+| 예시 | "항상 존댓말로", "표로 정리해줘", "내 이름은 OOO, 경영지원본부 재무팀" |
 
 ```
 세션 시작
@@ -42,13 +42,13 @@
 세션 중 작업
   │
   ▼
-┌─────────────────┐     ┌──────────────────────┐
-│ Claude가 패턴    │────▶│ ~/.claude/projects/  │
-│ 발견/학습        │     │   <project>/memory/  │
-└─────────────────┘     │   ├── MEMORY.md      │
-                        │   ├── debugging.md   │
-  다음 세션 시작          │   └── patterns.md   │
-  │                     └──────────────────────┘
+┌─────────────────┐     ┌───────────────────────────────┐
+│ Claude가 패턴    │────▶│ %USERPROFILE%\.claude\        │
+│ 발견/학습        │     │   projects\<project>\memory\  │
+└─────────────────┘     │   ├── MEMORY.md               │
+                        │   ├── debugging.md            │
+  다음 세션 시작          │   └── patterns.md            │
+  │                     └───────────────────────────────┘
   ▼                              │
 ┌─────────────┐                  │
 │ MEMORY.md   │◀─────────────────┘
@@ -68,7 +68,8 @@
 - 기본으로 켜져 있다 (따로 설정할 필요 없음)
 - `/memory` 로 Auto Memory 토글 가능
 - "이건 기억해둬", "pnpm 쓴다고 기억해" 같이 직접 지시해도 된다
-- `~/.claude/projects/<프로젝트>/memory/` 에 마크다운 파일로 저장된다
+- Windows: `%USERPROFILE%\.claude\projects\<프로젝트>\memory\` 에 마크다운 파일로 저장된다
+- Git Bash: `~/.claude/projects/<프로젝트>/memory/` 로도 접근 가능 (같은 위치)
 
 ## EXECUTE
 
@@ -95,7 +96,7 @@
 Claude Code에 이렇게 말해본다:
 
 ```
-나는 [이름]이고, [직업]이야. 이걸 기억해둬.
+나는 [이름]이고, 경영지원본부 [팀명]팀에서 [담당업무]를 하고 있어. 이걸 기억해둬.
 ```
 
 > Claude가 Auto Memory에 정보를 기록하는 것을 직접 확인해보자. `/memory` 로 저장된 내용을 열어볼 수 있다.
@@ -108,8 +109,8 @@ AskUserQuestion({
     "question": "CLAUDE.md와 Auto Memory의 차이는?",
     "header": "Quiz 3-1",
     "options": [
-      {"label": "CLAUDE.md는 내가 쓰고, Auto Memory는 Claude가 쓴다", "description": "각각 작성 주체가 다르다"},
       {"label": "같은 파일이다", "description": "이름만 다른 같은 기능"},
+      {"label": "CLAUDE.md는 내가 쓰고, Auto Memory는 Claude가 쓴다", "description": "각각 작성 주체가 다르다"},
       {"label": "Auto Memory는 한 번만 읽힌다", "description": "매 세션마다 읽히는지 아닌지"}
     ],
     "multiSelect": false
@@ -117,4 +118,4 @@ AskUserQuestion({
 })
 ```
 
-정답: 1번. CLAUDE.md는 **내가 Claude에게 주는 지시문**이고, Auto Memory는 **Claude가 작업하면서 스스로 기록하는 메모**다. 둘 다 매 세션 시작 시 자동으로 읽힌다.
+정답: 2번 ("CLAUDE.md는 내가 쓰고, Auto Memory는 Claude가 쓴다"). CLAUDE.md는 **내가 Claude에게 주는 지시문**이고, Auto Memory는 **Claude가 작업하면서 스스로 기록하는 메모**다. 둘 다 매 세션 시작 시 자동으로 읽힌다.

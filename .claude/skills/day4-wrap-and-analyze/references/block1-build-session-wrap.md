@@ -122,20 +122,20 @@ SKILL.md에 Step 1: 변경 내용 확인 섹션을 추가해줘.
 ```
 SKILL.md에 Phase 1 섹션을 추가해줘.
 4개의 전문가 에이전트가 동시에 분석하는 부분이야:
-1. doc-updater: 문서 중 업데이트할 곳 찾기
-2. automation-scout: 반복 패턴 발견 -> 자동화 제안
-3. learning-extractor: 오늘 배운 것 정리
-4. followup-suggester: 다음에 할 일 제안
+1. doc-updater: CLAUDE.md 경영 현황 반영, 전략 문서 갱신
+2. automation-scout: 반복 보고 자동화 (KPI 수집, 주간 브리핑), 회의록 템플릿화
+3. learning-extractor: 의사결정 패턴 학습, 이번 주 결정사항 정리
+4. followup-suggester: 미완료 액션 아이템 추적, 다음 경영회의 준비물 안내
 
 각 에이전트가 동시에 실행되도록 작성해줘.
 Block 0에서 본 session-wrap 원본의 구조를 참고해서 만들어줘.
 ```
 
 > 4개 에이전트는 각자 독립적으로 분석합니다:
-> - **doc-updater**: "CLAUDE.md에 오늘 작업 내용을 반영해야 할까?"
-> - **automation-scout**: "반복되는 패턴이 있으면 스킬이나 스크립트로 만들 수 있을까?"
-> - **learning-extractor**: "오늘 배운 것을 정리"
-> - **followup-suggester**: "내일 이어서 할 일은 뭐가 있을까?"
+> - **doc-updater**: "CLAUDE.md 경영 현황을 반영하고, 전략 문서를 갱신해야 할까?"
+> - **automation-scout**: "반복 보고(KPI 수집, 주간 브리핑)를 자동화하거나, 회의록 템플릿을 만들 수 있을까?"
+> - **learning-extractor**: "이번 주 의사결정 패턴을 정리하고, 결정사항을 목록화"
+> - **followup-suggester**: "미완료 액션 아이템을 추적하고, 다음 경영회의 준비물을 안내"
 >
 > 이 4개가 서로 의존하지 않으므로 동시에(병렬로) 실행됩니다.
 
@@ -202,13 +202,13 @@ AskUserQuestion({
     "question": "session-wrap 스킬에서 Phase 1의 4개 에이전트가 '병렬'로 실행되는 이유는?",
     "header": "Quiz 1",
     "options": [
+      {"label": "에이전트끼리 대화해야 해서", "description": "협업을 위한 병렬 처리"},
       {"label": "서로 의존하지 않아서 동시에 실행 가능", "description": "4개 에이전트가 각자 독립적으로 분석"},
-      {"label": "순서대로 하면 결과가 달라져서", "description": "실행 순서가 결과에 영향"},
-      {"label": "에이전트끼리 대화해야 해서", "description": "협업을 위한 병렬 처리"}
+      {"label": "순서대로 하면 결과가 달라져서", "description": "실행 순서가 결과에 영향"}
     ],
     "multiSelect": false
   }]
 })
 ```
 
-정답: 1번. 4개 에이전트는 각자 독립적인 분석을 수행한다. doc-updater는 문서만 보고, automation-scout는 패턴만 보고, 각자 다른 관점에서 분석하므로 서로 기다릴 필요가 없다. 그래서 동시에(병렬로) 실행해서 시간을 절약한다.
+정답: 2번. 4개 에이전트는 각자 독립적인 분석을 수행한다. doc-updater는 문서만 보고, automation-scout는 패턴만 보고, 각자 다른 관점에서 분석하므로 서로 기다릴 필요가 없다. 그래서 동시에(병렬로) 실행해서 시간을 절약한다.
