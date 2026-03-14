@@ -1,9 +1,9 @@
 ---
-name: day3-clarify
-description: AI Native Camp Day 3 Clarify & GitHub. Clarify 플러그인으로 모호한 요구사항을 명확하게 만들고, 나만의 스킬을 만들고, PRD를 작성하여 GitHub에 첫 PR을 제출한다. "3일차", "Day 3", "clarify", "클래리파이", "PRD", "GitHub" 요청에 사용.
+name: day4-clarify-and-github
+description: AI Native Camp Day 4 Clarify & GitHub. Clarify 플러그인으로 모호한 요구사항을 명확하게 만들고, 나만의 스킬을 만들고, PRD를 작성하여 GitHub에 첫 PR을 제출한다. "4일차", "Day 4", "clarify", "클래리파이", "PRD", "GitHub" 요청에 사용.
 ---
 
-# Day 3: Clarify
+# Day 4: Clarify & GitHub
 
 이 스킬이 호출되면 아래 **STOP PROTOCOL**을 반드시 따른다.
 

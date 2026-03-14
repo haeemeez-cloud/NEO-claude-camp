@@ -1,11 +1,27 @@
 ---
-name: day1-onboarding
-description: AI Native Camp Day 1 온보딩. Claude와 대화하면서 Claude Code를 익힌다. "1일차", "Day 1", "온보딩" 요청에 사용.
+name: day2-review-and-features
+description: AI Native Camp Day 2 복습 + 핵심 기능. Day 1 복습 후 MCP, Hook, Plugin을 배운다. "2일차", "Day 2", "복습", "MCP", "Hook", "Plugin" 요청에 사용.
 ---
 
-# Day 1: Onboarding
+# Day 2: 복습 + 핵심 기능
 
 이 스킬이 호출되면 아래 **STOP PROTOCOL**을 반드시 따른다.
+
+---
+
+## 용어 정리
+
+| 용어 | 뜻 |
+|------|-----|
+| MCP | Model Context Protocol. AI와 외부 도구를 연결하는 오픈 표준 프로토콜 |
+| Host | MCP 연결의 진입점. Claude Code가 Host 역할 |
+| Client | Host 안에서 MCP 서버와의 연결을 관리하는 중간 관리자 |
+| Server | 실제 외부 도구를 제공하는 프로그램 (예: 파일시스템 서버, Slack 서버) |
+| Transport | Host와 Server가 통신하는 방식. HTTP(클라우드) 또는 stdio(로컬) |
+| Hook | 특정 이벤트가 발생하면 자동으로 실행되는 셸 스크립트. 결정론적(100% 실행) |
+| 결정론적 | 같은 입력이면 항상 같은 결과. AI(확률적)와 반대 개념 |
+| Plugin | Skill + MCP + Hook + Agent를 묶은 설치 패키지 |
+| Connector | 외부 서비스와의 연결을 담당하는 MCP 서버의 별칭 |
 
 ---
 
@@ -22,21 +38,21 @@ description: AI Native Camp Day 1 온보딩. Claude와 대화하면서 Claude Co
 │ 2. 기능을 설명한다                                        │
 │ 3. references/에서 해당 블록 파일의 EXECUTE 섹션을 읽는다    │
 │ 4. "지금 직접 실행해보세요"라고 안내한다                     │
-│ 5. ⛔ 여기서 반드시 STOP. 턴을 종료한다.                    │
+│ 5. 여기서 반드시 STOP. 턴을 종료한다.                       │
 │                                                          │
-│ ❌ 절대 하지 않는 것: 퀴즈 출제, QUIZ 섹션 읽기             │
-│ ❌ 절대 하지 않는 것: AskUserQuestion 호출                  │
-│ ❌ 절대 하지 않는 것: "실행해봤나요?" 질문                   │
+│ 절대 하지 않는 것: 퀴즈 출제, QUIZ 섹션 읽기                │
+│ 절대 하지 않는 것: AskUserQuestion 호출                     │
+│ 절대 하지 않는 것: "실행해봤나요?" 질문                      │
 └──────────────────────────────────────────────────────────┘
 
-  ⬇️ 사용자가 돌아와서 "했어", "완료", "다음" 등을 입력한다
+  사용자가 돌아와서 "했어", "완료", "다음" 등을 입력한다
 
 ┌─ Phase B (두 번째 턴) ──────────────────────────────┐
 │ 1. references/에서 해당 블록 파일의 QUIZ 섹션을 읽는다       │
 │ 2. AskUserQuestion으로 퀴즈를 출제한다                     │
 │ 3. 정답/오답 피드백을 준다                                 │
 │ 4. 다음 블록으로 이동할지 AskUserQuestion으로 묻는다         │
-│ 5. ⛔ 다음 블록을 시작하면 다시 Phase A부터.                │
+│ 5. 다음 블록을 시작하면 다시 Phase A부터.                   │
 └──────────────────────────────────────────────────────────┘
 ```
 
@@ -52,7 +68,7 @@ description: AI Native Camp Day 1 온보딩. Claude와 대화하면서 Claude Co
 모든 블록의 Phase A 시작 시, 해당 reference 파일 상단의 `> 공식 문서:` URL을 **반드시 그대로 출력**한다.
 
 ```
-📖 공식 문서: [URL]
+공식 문서: [URL]
 ```
 
 - reference 파일에 URL이 여러 개 있으면 전부 출력한다
@@ -65,20 +81,34 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 
 ```
 ---
-👆 위 내용을 직접 실행해보세요.
+위 내용을 직접 실행해보세요.
 실행이 끝나면 "완료" 또는 "다음"이라고 입력해주세요.
 ```
 
 이 문구 이후에 어떤 도구 호출(AskUserQuestion 포함)이나 추가 텍스트도 출력하지 않는다.
 
-### 블록 특수 규칙
+---
 
-- **Block 0 (Setup)**: 퀴즈 없음. Phase A에서 설명+실행 안내 → Stop. Phase B에서 완료 확인만.
-- **Block 1 (Experience)**: Phase A에서 3가지 데모 안내 → Stop. Phase B에서 체험 소감 확인.
-- **Block 2 (Why)**: Phase A에서 Quiz 1 출제 → 피드백 → Stop. Phase B에서 Quiz 2 + 영상 안내.
-- **Block 3 (What)**: 7개 기능 각각이 독립 블록. 3-1부터 3-7까지 각각 Phase A → Phase B.
-- **Block 3-Break (쉬어가기)**: Phase A만 있고 Phase B 없음. 퀴즈 없음. 터미널 소개 + Status Line 설정 체험.
-- **Block 4 (Basics)**: Phase A에서 설명+실행 안내 → Stop. Phase B에서 퀴즈 3개 연속.
+## 소요 시간
+
+| Block | 주제 | 예상 시간 |
+|-------|------|-----------|
+| 0 | Day 1 퀴즈 복습 | ~15분 |
+| 1 | 데이터 실습 복습 | ~25분 |
+| 2 | MCP | ~25분 |
+| 3 | Hook | ~20분 |
+| 4 | Plugin | ~20분 |
+| **합계** | | **~105분** |
+
+## 블록 특수 규칙
+
+- **Block 0 (퀴즈 복습)**: Phase A에서 Day 1 개념 퀴즈 5문항을 AskUserQuestion으로 출제한다 (AskUserQuestion 예외). Phase B 없음. 틀린 문제는 피드백 후 넘어감.
+- **Block 1 (데이터 실습 복습)**: Phase A에서 새로운 데이터 시나리오 소개 + 실습 안내 → Stop. Phase B에서 퀴즈.
+  - 새 시나리오: "이번 주 신규 입고 상품 50개가 추가되었다. products_new.csv를 기존 products.csv에 병합하고, 중복 SKU를 처리하고, 재고를 업데이트하라"
+  - Claude가 products_new.csv를 자동 생성해줌
+- **Block 2 (MCP)**: 표준 Phase A/B
+- **Block 3 (Hook)**: 표준 Phase A/B
+- **Block 4 (Plugin)**: 표준 Phase A/B
 
 ---
 
@@ -86,14 +116,11 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 
 | 블록 | 파일 |
 |------|------|
-| Block 0 | `references/block0-setup.md` |
-| Block 1 | `references/block1-experience.md` |
-| Block 2 | `references/block2-why.md` |
-| Block 3-1 ~ 3-4 | `references/block3-1-memory.md` ~ `references/block3-4-subagent.md` |
-| Block 3-Break | `references/block3-break.md` (쉬어가기: 터미널 & Status Line) |
-| Block 3-5 ~ 3-7 | `references/block3-5-agent-teams.md` ~ `references/block3-7-plugin.md` |
-| Block 3 마무리 | `references/block3-summary.md` |
-| Block 4 | `references/block4-basics.md` |
+| Block 0 | `references/block0-review-quiz.md` |
+| Block 1 | `references/block1-review-practice.md` |
+| Block 2 | `references/block2-mcp.md` |
+| Block 3 | `references/block3-hook.md` |
+| Block 4 | `references/block4-plugin.md` |
 
 > 파일 경로는 이 SKILL.md 기준 상대경로다.
 > 각 reference 파일은 `## EXPLAIN`, `## EXECUTE`, `## QUIZ` 섹션으로 구성된다.
@@ -105,8 +132,6 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 - 한 번에 한 블록씩 진행한다
 - "다음", "skip", 블록 번호/이름으로 이동한다
 - Claude Code 관련 질문이 오면 claude-code-guide 에이전트(내장 도구)로 답변한다. 답변 후 사용자가 직접 따라할 수 있게 단계별로 안내하고, 질문할 때는 AskUserQuestion을 사용한다. 내장 에이전트 답변이 부정확하다고 판단되면, 공식 문서를 `curl`로 파일에 저장한 뒤 Read 툴로 꼼꼼히 읽고 정확한 정보로 다시 답한다 (WebFetch는 요약/손실 위험이 있으므로 사용하지 않는다)
-- Block 3-4(Subagent) 완료 후 → Block 3-Break(쉬어가기) → Block 3-5(Agent Teams)로 이어진다
-- Block 3의 7개 기능이 모두 끝나면 `references/block3-summary.md`를 읽고 관계도를 보여준다
 
 ---
 
@@ -116,22 +141,23 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 
 | Block | 주제 | 내용 |
 |-------|------|------|
-| 0 | Setup | 첫 실행 설정 + 에디터 |
-| 1 | Experience | Working Backward 데모 3가지 |
-| 2 | Why | 왜 CLI? 왜 터미널? (퀴즈 2개) |
-| 3 | What | 7개 기능 소개 |
-| 4 | Basics | CLI + git + GitHub (퀴즈 3개) |
+| 0 | Day 1 퀴즈 복습 | 어제 배운 개념 5문항 퀴즈 |
+| 1 | 데이터 실습 복습 | 신규 데이터 병합 실습 |
+| 2 | MCP | 외부 도구 연결 표준 프로토콜 |
+| 3 | Hook | 이벤트 기반 자동 실행 |
+| 4 | Plugin | 기능 묶음 패키지 |
 
 ```json
 AskUserQuestion({
   "questions": [{
     "question": "어디서부터 시작할까요?",
-    "header": "시작 블록",
+    "header": "Day 2 시작 블록",
     "options": [
-      {"label": "Block 0: Setup", "description": "첫 실행 설정 + 에디터"},
-      {"label": "Block 1: Experience", "description": "Working Backward 데모 3가지"},
-      {"label": "Block 2: Why", "description": "왜 CLI? 왜 터미널?"},
-      {"label": "Block 3: What", "description": "7개 기능 소개"}
+      {"label": "Block 0: Day 1 퀴즈 복습", "description": "어제 배운 개념 5문항 퀴즈"},
+      {"label": "Block 1: 데이터 실습 복습", "description": "신규 데이터 병합 실습"},
+      {"label": "Block 2: MCP", "description": "외부 도구 연결 표준 프로토콜"},
+      {"label": "Block 3: Hook", "description": "이벤트 기반 자동 실행"},
+      {"label": "Block 4: Plugin", "description": "기능 묶음 패키지"}
     ],
     "multiSelect": false
   }]

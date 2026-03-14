@@ -1,9 +1,9 @@
 ---
-name: day2-mcp-and-context-sync
-description: AI Native Camp Day 2 MCP & Context Sync. MCP를 배우고 나만의 Context Sync 스킬을 만든다. "2일차", "Day 2", "MCP", "context sync" 요청에 사용.
+name: day3-mcp-deep-dive
+description: AI Native Camp Day 3 MCP 딥다이브 & Context Sync. MCP를 깊이 배우고 나만의 Context Sync 스킬을 만든다. "3일차", "Day 3", "MCP", "context sync" 요청에 사용.
 ---
 
-# Day 2: MCP & Context Sync
+# Day 3: MCP 딥다이브 & Context Sync
 
 이 스킬이 호출되면 아래 **STOP PROTOCOL**을 반드시 따른다.
 
