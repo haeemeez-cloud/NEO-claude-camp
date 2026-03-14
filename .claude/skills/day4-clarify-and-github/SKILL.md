@@ -81,7 +81,7 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 - **Block 1 (Experience Vague)**: **예외** — Phase A에서 Claude가 clarify:vague 프로토콜을 시연한다. 학생이 모호한 요구사항을 던지면 Claude가 AskUserQuestion으로 clarify한다. 학생은 "clarify 받는 사람" 역할.
 - **Block 2 (Build Clarify)**: 표준이지만 EXECUTE에서 플러그인의 vague SKILL.md를 Read로 분석한 후, 템플릿 기반으로 나만의 스킬을 작성한다.
 - **Block 3 (Plugin & Unknown)**: **메인 블록** — Plugin 심화 분석 + clarify:unknown 체험.
-- **Block 4 (PRD & GitHub)**: 표준 Phase A/B이지만 PRD 작성은 인터랙티브. Claude가 GitHub ID 확인 → PRD 초안 작성 → 검증 → PR 제출까지 자동으로 진행. Phase B 퀴즈 후 Day 3 과제 안내.
+- **Block 4 (PRD & GitHub)**: 표준 Phase A/B이지만 PRD 작성은 인터랙티브. Claude가 GitHub ID 확인 → PRD 초안 작성 → 검증 → PR 제출까지 자동으로 진행. Phase B 퀴즈 후 Day 4 과제 안내.
 
 ---
 
@@ -102,10 +102,10 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 
 > **"설치한 플러그인을 해부하고, 직접 만들어보기"**
 
-Day 1에서 설치한 clarify 플러그인을 체험 → 구조 분석 → 나만의 버전 제작 → 심화 활용
+Day 2에서 설치한 clarify 플러그인을 체험 → 구조 분석 → 나만의 버전 제작 → 심화 활용
 
 ```
-Day 1에서 설치          Day 3에서 깊이 파기
+Day 2에서 설치          Day 4에서 깊이 파기
 ┌──────────────┐       ┌──────────────────────────┐
 │ /plugin      │       │ Block 0: 개념 이해        │
 │   install    │  ───▶ │ Block 1: vague 체험       │

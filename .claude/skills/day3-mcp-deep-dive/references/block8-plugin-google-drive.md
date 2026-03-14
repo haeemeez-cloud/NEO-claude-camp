@@ -11,7 +11,7 @@
 
 Block 6에서 Connector(클릭), Block 7에서 `claude mcp add`(명령어 한 줄)를 배웠다. 이번에는 **Plugin**이다.
 
-Day 1 Block 3-5에서 Plugin을 잠깐 언급했다: "Skill + MCP + Hook + Agent를 묶은 패키지." 이번에 실제로 설치해본다.
+Day 2 Block 4에서 Plugin을 배웠다: "Skill + MCP + Hook + Agent를 묶은 패키지." 이번에 실제로 설치해본다.
 
 ### Plugin이 특별한 이유
 

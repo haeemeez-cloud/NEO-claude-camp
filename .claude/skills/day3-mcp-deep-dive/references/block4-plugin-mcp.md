@@ -10,7 +10,7 @@
 
 ### Plugin과 MCP의 관계
 
-Day 1에서 배웠듯, **Plugin = Skill + MCP + Hook + Agent를 묶은 패키지**다.
+Day 2에서 배웠듯, **Plugin = Skill + MCP + Hook + Agent를 묶은 패키지**다.
 
 ```
 Plugin 안에 MCP가 포함될 수 있다
