@@ -1,11 +1,6 @@
 brand,commission_rate,contract_start,contract_end,contact_name,contact_email,product_count
-르블랑,15%,2024-03-01,2025-02-28,김서연,seo.yeon@leblanc.kr,5
-모드니,0.18,2024/06/15,2025/06/14,박준혁,jun.h@modeny.com,3
-세리나,12%,2024-01-10,2024-12-31,이하은,haeun@serina.co.kr,4
-하이드,0.2,2024-09-01,2025-08-31,최민수,minsu.choi@hyde.kr,4
-블루밍,0.15,24.07.01,25.06.30,정유진,yujin@blooming.kr,4
-르블랑,15%,2024-03-01,2025-02-28,김서연,seo.yeon@leblanc.kr,5
-모드니,18%,2024/06/15,2025/06/14,박준혁,jun.h@modeny.com,3
+르블랑,0.15,2024-03-01,2025-02-28,김서연,seo.yeon@leblanc.kr,5
+모드니,0.18,2024-06-15,2025-06-14,박준혁,jun.h@modeny.com,3
 세리나,0.12,2024-01-10,2024-12-31,이하은,haeun@serina.co.kr,4
-하이드,20%,2024-09-01,2025-08-31,최민수,minsu.choi@hyde.kr,4
-블루밍,15%,24.07.01,25.06.30,정유진,yujin@blooming.kr,4
+하이드,0.20,2024-09-01,2025-08-31,최민수,minsu.choi@hyde.kr,4
+블루밍,0.15,2024-07-01,2025-06-30,정유진,yujin@blooming.kr,4
